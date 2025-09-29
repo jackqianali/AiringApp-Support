@@ -1,71 +1,244 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="AiRingtone Support & FAQ">
-  <title>AiRingtone - Support</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AiRingtone — Support</title>
+  <meta name="description" content="Official support page for AiRingtone: AI-powered ringtone & audio editor." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-      line-height: 1.6;
-      background: #f9fafc;
-      color: #333;
+    :root{
+      --bg:#0b0c10; --card:#121319; --text:#e8eaed; --muted:#aab0bb;
+      --brand:#7dd3fc; --brand-2:#a78bfa; --ok:#34d399;
+      --radius:16px; --shadow: 0 10px 30px rgba(0,0,0,.25);
+      color-scheme: dark light;
     }
-    h1, h2 {
-      text-align: center;
-      color: #4A7AFF;
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f6f7fb; --card:#ffffff; --text:#0f172a; --muted:#596273; --shadow: 0 10px 24px rgba(8, 23, 53, .06) }
     }
-    a {
-      color: #4A7AFF;
-      text-decoration: none;
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+      background: radial-gradient(1200px 500px at 20% -10%, rgba(125,211,252,.15), transparent 60%),
+                  radial-gradient(800px 500px at 100% 0%, rgba(167,139,250,.12), transparent 60%), var(--bg);
+      color:var(--text); line-height:1.6;
     }
-    a:hover {
-      text-decoration: underline;
+    .wrap{max-width:980px; margin:auto; padding:56px 20px}
+    .topbar{display:flex; justify-content:flex-end; gap:8px; margin-bottom:8px}
+    .lang-btn{
+      padding:6px 10px; border-radius:10px; border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.05); color:var(--text); cursor:pointer; font-weight:600
     }
-    footer {
-      text-align: center;
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #777;
+    .lang-btn.active{background:linear-gradient(135deg, rgba(125,211,252,.18), rgba(167,139,250,.18))}
+    .hero{text-align:center; margin-bottom:32px;}
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:6px 12px; border-radius:999px;
+      background: linear-gradient(135deg, rgba(125,211,252,.18), rgba(167,139,250,.18));
+      color:var(--muted); font-weight:600; font-size:12px; letter-spacing:.04em;
     }
+    h1{
+      font-size: clamp(32px, 4vw, 44px); margin:16px 0 10px; line-height:1.15;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      -webkit-background-clip:text; background-clip:text; color:transparent; font-weight:800;
+    }
+    .lead{color:var(--muted); max-width:720px; margin: 10px auto 0;}
+    .grid{display:grid; gap:18px; grid-template-columns: repeat(12, 1fr); margin-top:28px;}
+    .card{
+      grid-column: span 12; background:var(--card); border-radius:var(--radius);
+      box-shadow: var(--shadow); padding:22px; border:1px solid rgba(255,255,255,.06);
+    }
+    .card h2{display:flex; align-items:center; gap:10px; font-size: 20px; margin:0 0 12px;}
+    .card p{margin:10px 0; color:var(--muted)}
+    .chip{display:inline-flex; align-items:center; gap:8px; padding:8px 10px; border-radius:10px;
+      background: rgba(125,211,252,.12); color:var(--text); border:1px solid rgba(125,211,252,.25); font-size:13px;}
+    ul.features{margin:12px 0 0; padding:0 0 0 18px}
+    ul.features li{margin:.35rem 0}
+    a{color:var(--brand); text-decoration:none}
+    a:hover{opacity:.9}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px;
+      border:1px solid rgba(255,255,255,.08);
+      background: linear-gradient(135deg, rgba(125,211,252,.16), rgba(167,139,250,.16));
+      color:var(--text); font-weight:600;}
+    .kvs{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+    details{background:var(--card); border-radius:12px; padding:14px 16px; border:1px solid rgba(255,255,255,.06)}
+    details + details{margin-top:10px}
+    summary{cursor:pointer; list-style:none; font-weight:600}
+    summary::-webkit-details-marker{display:none}
+    footer{text-align:center; color:var(--muted); margin-top:28px; font-size:13px}
+    @media (min-width: 720px){
+      .card.span-6{grid-column: span 6}
+      .card.span-4{grid-column: span 4}
+      .card.span-8{grid-column: span 8}
+      .card.span-12{grid-column: span 12}
+    }
+    .icon{width:22px;height:22px;vertical-align:-4px}
   </style>
 </head>
 <body>
-  <h1>AiRingtone</h1>
-  <p>Welcome to the official support page for <strong>AiRingtone</strong> — your personal AI-powered ringtone & background music editor.</p>
+  <div class="wrap">
+    <div class="topbar">
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="zh">中文</button>
+    </div>
 
-  <h2>📱 App Overview</h2>
-  <p>AiRingtone allows you to:</p>
-  <ul>
-    <li>🎙️ AI voice-cloning ringtones</li>
-    <li>🎵 Mix background music with fade-in/out</li>
-    <li>✂️ Trim, crop, and edit audio clips</li>
-    <li>☁️ Sync your projects securely across devices</li>
-  </ul>
+    <header class="hero">
+      <span class="badge" data-i18n="badge">AI-powered • Ringtone & Audio Editor</span>
+      <h1>AiRingtone</h1>
+      <p class="lead" data-i18n="lead">Welcome to the official support page for <strong>AiRingtone</strong>. Create custom ringtones, trim & mix audio, and manage your sounds with ease.</p>
+    </header>
 
-  <h2>🛠️ Support</h2>
-  <p>If you need help or encounter issues:</p>
-  <ul>
-    <li>Email us at: <a href="mailto:junhua.qian@gmail.com">junhua.qian@gmail.com</a></li>
-    <li>GitHub Issues: <a href="https://github.com/yourusername/AiringApp-Support/issues">Submit an Issue</a></li>
-  </ul>
+    <section class="grid">
+      <!-- App Overview -->
+      <article class="card span-8">
+        <h2>
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M7 4h10a2 2 0 0 1 2 2v7.5a5.5 5.5 0 1 1-11 0V6a2 2 0 0 1 2-2Zm7 15a3.5 3.5 0 0 0 3.5-3.5V6h-7v9.5A3.5 3.5 0 0 0 14 19Z" fill="currentColor"/></svg>
+          <span data-i18n="overview.title">App Overview</span>
+        </h2>
+        <p data-i18n="overview.desc">What you can do with AiRingtone:</p>
+        <ul class="features">
+          <li data-i18n="overview.f1">🎙️ AI voice-cloning ringtones</li>
+          <li data-i18n="overview.f2">🎚️ Mix background music with fade in/out</li>
+          <li data-i18n="overview.f3">✂️ Trim, crop, and edit audio clips</li>
+          <li data-i18n="overview.f4">☁️ Securely sync projects across devices</li>
+        </ul>
+        <div class="kvs">
+          <span class="chip" data-i18n="overview.k1">iOS 16+</span>
+          <span class="chip" data-i18n="overview.k2">Offline editing</span>
+          <span class="chip" data-i18n="overview.k3">Dark mode</span>
+        </div>
+      </article>
 
-  <h2>❓ FAQ</h2>
-  <p><strong>Q: Is AiRingtone free to use?</strong><br>
-  A: The app offers free basic ringtones and paid AI-generated features.</p>
+      <!-- Quick Links -->
+      <aside class="card span-4">
+        <h2>
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 2a5 5 0 1 1 0 10A5 5 0 0 1 12 2Zm0 12c-4.418 0-8 2.239-8 5v1h16v-1c0-2.761-3.582-5-8-5Z" fill="currentColor"/></svg>
+          <span data-i18n="links.title">Quick Links</span>
+        </h2>
+        <p class="kvs">
+          <a class="btn" href="#" target="_blank" rel="noopener" data-i18n="links.app">Download on App Store</a>
+          <a class="btn" href="privacy.html" data-i18n="links.privacy">Privacy Policy</a>
+        </p>
+      </aside>
 
-  <p><strong>Q: Which iOS versions are supported?</strong><br>
-  A: iOS 16 and later.</p>
+      <!-- Support -->
+      <article class="card span-6">
+        <h2>
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 2a7 7 0 0 0-7 7v2H4a2 2 0 1 0 0 4h1v1a7 7 0 0 0 14 0v-1h1a2 2 0 1 0 0-4h-1V9a7 7 0 0 0-7-7Z" fill="currentColor"/></svg>
+          <span data-i18n="support.title">Support</span>
+        </h2>
+        <p data-i18n="support.desc">If you need help or encounter issues:</p>
+        <ul class="features">
+          <li><span data-i18n="support.email">Email:</span> <a href="mailto:junhua.qian@gmail.com">junhua.qian@gmail.com</a></li>
+          <li><a href="https://github.com/jackqian1/AiringApp-Support/issues" target="_blank" rel="noopener" data-i18n="support.issue">GitHub Issues: Submit an Issue</a></li>
+        </ul>
+      </article>
 
-  <h2>🔒 Privacy</h2>
-  <p>We value your privacy. AiRingtone does not collect personal audio without your consent.</p>
+      <!-- FAQ -->
+      <article class="card span-6">
+        <h2>
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-2h2Zm1.07-7.75-.9.92A2.5 2.5 0 0 0 12 12h-1v-1a3.5 3.5 0 1 1 6 2.5l-.9.9a1 1 0 0 0-.3.71V16h-2v-1.21a3 3 0 0 1 .88-2.12l1.1-1.12a1.5 1.5 0 1 0-2.12-2.12Z" fill="currentColor"/></svg>
+          <span data-i18n="faq.title">FAQ</span>
+        </h2>
+        <details open>
+          <summary data-i18n="faq.q1">Is AiRingtone free to use?</summary>
+          <p data-i18n="faq.a1">Free basic features are included; AI-generated content and cloud services may require credits.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.q2">Which iOS versions are supported?</summary>
+          <p data-i18n="faq.a2">iOS 16 and later.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.q3">How do I report a bug or request a feature?</summary>
+          <p data-i18n="faq.a3">Please open a ticket on GitHub Issues.</p>
+        </details>
+      </article>
 
-  <footer>
-    &copy; 2025 Junhua Qian. All Rights Reserved.
-  </footer>
+      <!-- Privacy blurb -->
+      <article id="privacy" class="card span-12">
+        <h2>
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 3.8 9.7 8 10 4.2-.3 8-5 8-10V6l-8-4Z" fill="currentColor"/></svg>
+          <span data-i18n="privacy.title">Privacy</span>
+        </h2>
+        <p data-i18n="privacy.desc">We value your privacy. AiRingtone does not collect personal audio without your consent. Diagnostic data (if enabled) is used only to improve stability and performance.</p>
+      </article>
+    </section>
+
+    <footer>
+      © <span id="y"></span> AiRingtone • <span data-i18n="footer">All rights reserved</span>
+    </footer>
+  </div>
+
+  <script>
+    const dict = {
+      en: {
+        badge:"AI-powered • Ringtone & Audio Editor",
+        lead:"Welcome to the official support page for <strong>AiRingtone</strong>. Create custom ringtones, trim & mix audio, and manage your sounds with ease.",
+        "overview.title":"App Overview",
+        "overview.desc":"What you can do with AiRingtone:",
+        "overview.f1":"🎙️ AI voice-cloning ringtones",
+        "overview.f2":"🎚️ Mix background music with fade in/out",
+        "overview.f3":"✂️ Trim, crop, and edit audio clips",
+        "overview.f4":"☁️ Securely sync projects across devices",
+        "overview.k1":"iOS 16+","overview.k2":"Offline editing","overview.k3":"Dark mode",
+        "links.title":"Quick Links","links.app":"Download on App Store","links.privacy":"Privacy Policy",
+        "support.title":"Support","support.desc":"If you need help or encounter issues:","support.email":"Email:",
+        "support.issue":"GitHub Issues: Submit an Issue",
+        "faq.title":"FAQ",
+        "faq.q1":"Is AiRingtone free to use?","faq.a1":"Free basic features are included; AI-generated content and cloud services may require credits.",
+        "faq.q2":"Which iOS versions are supported?","faq.a2":"iOS 16 and later.",
+        "faq.q3":"How do I report a bug or request a feature?","faq.a3":"Please open a ticket on GitHub Issues.",
+        "privacy.title":"Privacy","privacy.desc":"We value your privacy. AiRingtone does not collect personal audio without your consent. Diagnostic data (if enabled) is used only to improve stability and performance.",
+        "footer":"All rights reserved"
+      },
+      zh: {
+        badge:"AI 驱动 • 铃声与音频编辑器",
+        lead:"欢迎来到 <strong>AiRingtone</strong> 官方支持页面。轻松制作专属铃声，剪辑与混音，管理你的音频。",
+        "overview.title":"应用概览",
+        "overview.desc":"你可以在 AiRingtone 中完成：",
+        "overview.f1":"🎙️ AI 拟声/变声铃声",
+        "overview.f2":"🎚️ 背景音乐淡入淡出混音",
+        "overview.f3":"✂️ 音频裁剪、拼接与编辑",
+        "overview.f4":"☁️ 多设备安全同步项目",
+        "overview.k1":"iOS 16+","overview.k2":"离线编辑","overview.k3":"深色模式",
+        "links.title":"快速入口","links.app":"在 App Store 下载","links.privacy":"隐私政策",
+        "support.title":"技术支持","support.desc":"遇到问题或需要帮助：","support.email":"邮箱：",
+        "support.issue":"GitHub Issues：提交问题",
+        "faq.title":"常见问题",
+        "faq.q1":"是否免费？","faq.a1":"应用包含基础免费功能；AI 生成与云服务可能需要点数。",
+        "faq.q2":"支持哪些 iOS 版本？","faq.a2":"iOS 16 及以上。",
+        "faq.q3":"如何反馈问题/提需求？","faq.a3":"请在 GitHub Issues 提交工单。",
+        "privacy.title":"隐私说明","privacy.desc":"我们重视你的隐私。未经你的同意，AiRingtone 不会采集个人音频。若开启诊断数据，仅用于改进稳定性与性能。",
+        "footer":"保留所有权利"
+      }
+    };
+
+    function applyLang(lang){
+      const t = dict[lang] || dict.en;
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if (t[key] !== undefined){
+          if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") el.placeholder = t[key];
+          else el.innerHTML = t[key];
+        }
+      });
+      document.querySelectorAll(".lang-btn").forEach(b => b.classList.toggle("active", b.dataset.lang===lang));
+      localStorage.setItem("airing_lang", lang);
+      document.documentElement.lang = lang;
+    }
+
+    const saved = localStorage.getItem("airing_lang");
+    const auto = saved || (navigator.language||"en").toLowerCase().startsWith("zh") ? "zh" : "en";
+    applyLang(auto);
+
+    document.querySelectorAll(".lang-btn").forEach(b=>{
+      b.addEventListener("click",()=>applyLang(b.dataset.lang));
+    });
+
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
